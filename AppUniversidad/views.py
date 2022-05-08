@@ -3,8 +3,20 @@ from .models import *
 from django.http import HttpResponse
 # Create your views here.
 
-def datos(self):
-    datos= Datos(Nombre="Camila", Apellido= "Serrano", DNI= 4155698)
-    datos.save()
-    texto= f"Nombre: {datos.Nombre}, Apellido: {datos.Apellido}, DNI: {datos.DNI}"
+def dato(self):
+    dato= Datos(Nombre="Camila", Apellido= "Serrano", DNI= 4155698)
+    dato.save()
+    texto= f"Nombre: {dato.Nombre}, Apellido: {dato.Apellido}, DNI: {dato.DNI}"
     return HttpResponse(texto)
+
+def inicio(request):
+    return render(request,'AppUniversidad/inicio.html')
+
+def datos(request):
+    return HttpResponse("Datos")
+
+def carreras(request):
+    return HttpResponse("Carreras")
+
+def cursos(request):
+    return HttpResponse("Cursos")
