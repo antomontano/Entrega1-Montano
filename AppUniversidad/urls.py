@@ -6,5 +6,6 @@ urlpatterns = [
     path('datos/', datos),
     path('carreras', carreras),
     path('cursos/', cursos),
+    path('noalumno/', noalumno)
     
 ]

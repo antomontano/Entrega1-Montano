@@ -20,3 +20,6 @@ def carreras(request):
 
 def cursos(request):
     return HttpResponse("Cursos")
+
+def noalumno(request):
+    return render(request,'AppUniversidad/NoAlumno.html')
