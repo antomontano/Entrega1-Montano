@@ -13,13 +13,19 @@ def inicio(request):
     return render(request,'AppUniversidad/inicio.html')
 
 def datos(request):
-    return HttpResponse("Datos")
+    return render(request,'AppUniversidad/datos.html')
 
 def carreras(request):
-    return HttpResponse("Carreras")
+
+    if request.method == 'POST':
+        carrera=Carrera(Facultad=request.post['facultad'], Carrera=request.post['carrera'] )
+        carrera.save()
+        return render(request,'AppUniversidad/cursos.html')
+
+    return render(request,'AppUniversidad/carreras.html')
 
 def cursos(request):
-    return HttpResponse("Cursos")
+    return render(request,'AppUniversidad/cursos.html')
 
 def noalumno(request):
     return render(request,'AppUniversidad/NoAlumno.html')

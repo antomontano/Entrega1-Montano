@@ -1,0 +1,20 @@
+{% extends "AppUniversidad/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1> Ingresá tu nombre y DNI </h1>
+
+{% endblock %}
+
+{% block contenidoquecambia %}
+
+<form action="{% url 'inicio' %}" method="POST"> {% csrf_token %}
+    <p>Nombre: <input type="text" name="nombre"></p>
+    <p>Apellido: <input type="text" name="apellido"></p>
+    <p>DNI: <input type="numer" name="dni"></p>
+    <input type="submit" value="Siguiente">
+
+</form>
+
+{% endblock %}
