@@ -9,12 +9,6 @@
 
 {% block contenidoquecambia %}
 
-<form action="{% url 'inicio' %}" method="POST"> {% csrf_token %}
-    <p>Nombre: <input type="text" name="nombre"></p>
-    <p>Apellido: <input type="text" name="apellido"></p>
-    <p>DNI: <input type="numer" name="dni"></p>
-    <input type="submit" value="Siguiente">
-
-</form>
+<h1> datos </h1>
 
 {% endblock %}

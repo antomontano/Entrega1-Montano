@@ -9,11 +9,6 @@
 
 {% block contenidoquecambia %}
 
-<form action="{% url 'datos' %}" method="POST"> {% csrf_token %}
-    <p>Año: <input type="numer" name="año"></p>
-    <p>Turno: <input type="text" name="turno"></p>
-    <input type="submit" value="Siguiente">
-
-</form>
+<h1> cursos </h1>
 
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse
+from AppUniversidad.forms import CarrerasFormulario
 # Create your views here.
 
 def dato(self):
@@ -18,9 +19,18 @@ def datos(request):
 def carreras(request):
 
     if request.method == 'POST':
-        carrera=Carrera(Facultad=request.post['facultad'], Carrera=request.post['carrera'] )
-        carrera.save()
-        return render(request,'AppUniversidad/cursos.html')
+        miformulario=CarrerasFormulario(request.POST)
+
+        if miformulario.is_valid():
+            informacion=miformulario.cleaned_data
+            carrera=Carrera(Facultad=informacion['Facultad'], NombreCarrera=informacion['NombreCarrera'] )
+            carrera.save()
+            return render(request,'AppUniversidad/cursos.html')
+        
+    else:
+        miformulario=CarrerasFormulario()
+    return render(request, 'AppUniversidad/carreras.html', {'formulario':miformulario})
+
 
     return render(request,'AppUniversidad/carreras.html')
 
