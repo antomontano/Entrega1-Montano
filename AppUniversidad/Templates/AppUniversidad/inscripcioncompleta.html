@@ -1,0 +1,15 @@
+{% extends "AppUniversidad/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1> ¡Te inscribiste correctamente a las pasantías! </h1>
+<h2> Pronto recibirás más informaicón desde la secretaría de tu facultad</h2>
+
+{% endblock %}
+
+{% block boton %}
+
+<a class="btn btn-primary" href="{% url 'inicio' %}">Volver al inicio</a>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse
-from AppUniversidad.forms import CarrerasFormulario
+from AppUniversidad.forms import *
 # Create your views here.
 
 def dato(self):
@@ -12,9 +12,6 @@ def dato(self):
 
 def inicio(request):
     return render(request,'AppUniversidad/inicio.html')
-
-def datos(request):
-    return render(request,'AppUniversidad/datos.html')
 
 def carreras(request):
 
@@ -32,10 +29,37 @@ def carreras(request):
     return render(request, 'AppUniversidad/carreras.html', {'formulario':miformulario})
 
 
-    return render(request,'AppUniversidad/carreras.html')
-
 def cursos(request):
-    return render(request,'AppUniversidad/cursos.html')
+    if request.method == 'POST':
+        miformulario2=CursosFormulario(request.POST)
+
+        if miformulario2.is_valid():
+            informacion2=miformulario2.cleaned_data
+            curso=Curso(Año=informacion2['Año'], Turno=informacion2['Turno'])
+            curso.save()
+            return render(request, 'AppUniversidad/datos.html')
+
+    else:
+        miformulario2=CursosFormulario()
+    return render(request, 'AppUniversidad/cursos.html', {'formulario2': miformulario2})
+
+
+def datos(request):
+    if request.method == 'POST':
+        miformulario3=DatosFormulario(request.POST)
+
+        if miformulario3.is_valid():
+            informacion3=miformulario3.cleaned_data
+            dato=Datos(Nombre=informacion3['Nombre'], Apellido=informacion3['Apellido'], DNI=informacion3['DNI'])
+            dato.save()
+            return render(request, 'AppUniversidad/inscripcioncompleta.html')
+
+    else:
+        miformulario3=DatosFormulario()
+    return render(request, 'AppUniversidad/datos.html', {'formulario3': miformulario3})
 
 def noalumno(request):
     return render(request,'AppUniversidad/NoAlumno.html')
+
+def inscripcioncompleta(request):
+    return render(request,'AppUniversidad/inscripcioncompleta.html')

@@ -9,6 +9,13 @@
 
 {% block contenidoquecambia %}
 
-<h1> datos </h1>
+<form action="{% url 'datos' %}" method="post">{% csrf_token %}
+    
+    <table>
+        {{ formulario3.as_table }}
+    </table>
+    <input type="submit" value="Siguiente">
+
+</form>
 
 {% endblock %}
