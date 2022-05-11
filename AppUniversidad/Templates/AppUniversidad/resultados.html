@@ -3,8 +3,11 @@
 
 {% block titulo %}
 
+{% if not respuesta %}
 <h1> Resultados </h1>
 <h2> para el apellido "{{Apellido}}" </h2>
+
+{% endif %}
 
 {% endblock %}
 
@@ -19,8 +22,16 @@
     {% endfor %}
 
 </ul>
-{% else %}
-<p> No se encontró nigún inscripto con ese apellido </p>
+{% elif not respuesta %}
+<p> No se encontraron resultados </p>
+
 {% endif %}
+
+<p style="color:darkred"> {{respuesta}} </p>
+
+{% if respuesta %}
+<a class="btn btn-primary" href="{% url 'busquedaApellidos' %}">Volver</a>
+{% endif %}
+
 
 {% endblock %}

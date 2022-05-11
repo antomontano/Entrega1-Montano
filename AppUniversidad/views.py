@@ -75,5 +75,5 @@ def buscar(request):
     
     else:
         respuesta="No se ingresó apellido"
-        return HttpResponse(respuesta)
+        return render(request, 'AppUniversidad/resultados.html', {'respuesta':respuesta})
 
