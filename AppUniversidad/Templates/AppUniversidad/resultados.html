@@ -1,0 +1,23 @@
+{% extends "AppUniversidad/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1> Resultados para el apellido {{Apellido}} </h1>
+
+{% endblock %}
+
+{% block contenidoquecambia %}
+
+{% if datos %}
+
+<ul>
+    {% for dato in datos %}
+        <li> {{dato.Apellido}}, {{dato.DNI}} </li>
+    <br>
+    {% endfor %}
+
+</ul>
+{% endif %}
+
+{% endblock %}

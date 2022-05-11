@@ -63,3 +63,17 @@ def noalumno(request):
 
 def inscripcioncompleta(request):
     return render(request,'AppUniversidad/inscripcioncompleta.html')
+
+def busquedaApellidos(request):
+    return render(request, 'AppUniversidad/busquedaApellidos.html')
+
+def buscar(request):
+    if request.GET['Apellido']:
+        Apellido=request.GET['Apellido']
+        datos=Datos.objects.filter(Apellido=Apellido)
+        return render(request, 'AppUniversidad/resultados.html', {'datos':datos, 'Apellido':Apellido})
+    
+    else:
+        respuesta="No se ingresó apellido"
+        return HttpResponse(respuesta)
+
