@@ -3,7 +3,8 @@
 
 {% block titulo %}
 
-<h1> Resultados para el apellido {{Apellido}} </h1>
+<h1> Resultados </h1>
+<h2> para el apellido "{{Apellido}}" </h2>
 
 {% endblock %}
 
@@ -18,6 +19,8 @@
     {% endfor %}
 
 </ul>
+{% else %}
+<p> No se encontró nigún inscripto con ese apellido </p>
 {% endif %}
 
 {% endblock %}
